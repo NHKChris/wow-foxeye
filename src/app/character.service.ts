@@ -3,16 +3,14 @@ import { Observable, of } from 'rxjs';
 import { Character } from './character/character';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CharacterService {
   characterNames: string[] = ["Foxwen", "Dliss", "Typhux", "Foxkyn", "Patoulacci"];
-  baseApiUrl: string = "https://eu.api.battle.net/wow/character/";
-  renderApiUrl: string = "http://render-eu.worldofwarcraft.com/character/";
   realmName: string = "ysondre";
-  apiKey: string = "7x4eub93x8sn7pphu84hyyxasva3z44w";
 
   getCharacters(): Observable<Character[]> {
     const characters: Character[] = [];
@@ -35,7 +33,7 @@ export class CharacterService {
   }
 
   generateUrl(realmName: string, characterName: string, field: string): string {
-    return `${this.baseApiUrl}${realmName}/${characterName}?fields=${field}&locale=fr_FR&apikey=${this.apiKey}`;
+    return `${environment.wowApi.baseUrl}${realmName}/${characterName}?fields=${field}&locale=fr_FR&apikey=${environment.wowApi.apiKey}`;
   }
 
   getCharacterItems(character: Character) {
@@ -63,7 +61,7 @@ export class CharacterService {
   }
 
   getAvatarUrl(thumbnail: string) {
-    return `${this.renderApiUrl}${thumbnail}`;
+    return `${environment.wowApi.renderUrl}${thumbnail}`;
   }
 
   getFullAvatarUrl(thumbnail: string) {
