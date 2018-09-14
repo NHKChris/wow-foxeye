@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { CharactersComponent } from './characters/characters.component';
 import { CharacterComponent } from './character/character.component';
+import { UiModule } from './ui/ui.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { CharacterComponent } from './character/character.component';
   ],
   imports: [
     HttpClientModule,
-    BrowserModule
+    BrowserModule,
+    UiModule
   ],
   providers: [],
   bootstrap: [AppComponent]

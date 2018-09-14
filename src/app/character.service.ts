@@ -38,25 +38,25 @@ export class CharacterService {
 
   getCharacterItems(character: Character) {
     this.getCharacterDataFromApi(this.realmName, character.name, "items")
-        .subscribe(
-          data => {
-            character.level = data.level;
-            character.iLevel = data.items.averageItemLevel
-            character.avatarUrl = this.getAvatarUrl(data.thumbnail);
-            character.fullAvatarUrl = this.getFullAvatarUrl(data.thumbnail);
-            console.log(data);
-          }
-        );
+      .subscribe(
+        data => {
+          character.level = data.level;
+          character.iLevel = data.items.averageItemLevel
+          character.avatarUrl = this.getAvatarUrl(data.thumbnail);
+          character.fullAvatarUrl = this.getFullAvatarUrl(data.thumbnail);
+          console.log(data);
+        }
+      );
     return character;
   }
 
   getCharacterReputation(character: Character) {
     this.getCharacterDataFromApi(this.realmName, character.name, "reputation")
-        .subscribe(
-          data => {
-            console.log(data);
-          }
-        );
+      .subscribe(
+        data => {
+          console.log(data);
+        }
+      );
     return character;
   }
 
