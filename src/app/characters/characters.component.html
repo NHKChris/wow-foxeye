@@ -1,1 +1,6 @@
-<app-character *ngFor="let character of characters" [character]="character"></app-character>
+<ng-container *ngIf="characterSelector | async as cs">
+    <div *ngIf="cs.error">
+        Erreur de chargement
+    </div>
+    <app-character *ngFor="let character of cs.characters" [character]="character"></app-character>
+</ng-container>
