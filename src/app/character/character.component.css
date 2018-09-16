@@ -1,0 +1,31 @@
+.character-card {
+    width: 14rem;
+    display: inline-block;
+    margin: 1rem;
+}
+
+.character-card-body {
+    padding: 0.8rem;
+    background-color: #1C262F;
+}
+
+.character-name {
+    font-size: 1.1em;
+    font-weight: bold;
+    display: inline;
+}
+
+.character-level {
+    font-size: 1em;
+    font-weight: normal;
+    float: right;
+}
+
+.character-class {
+    font-size: 0.8em;
+    font-weight: normal;
+}
+
+.character-list-group-item {
+    background-color: #323B43;
+}

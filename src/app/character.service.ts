@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Character } from './character/character';
+import { Class } from './character/class';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { environment } from '../environments/environment';
@@ -11,6 +12,7 @@ import { environment } from '../environments/environment';
 export class CharacterService {
   characterNames: string[] = ["Foxwen", "Dliss", "Typhux", "Foxkyn", "Patoulacci"];
   realmName: string = "ysondre";
+  classes: Class[];
 
   getCharacters(): Observable<Character[]> {
     const characters: Character[] = [];
@@ -43,7 +45,8 @@ export class CharacterService {
           character.level = data.level;
           character.iLevel = data.items.averageItemLevel
           character.avatarUrl = this.getAvatarUrl(data.thumbnail);
-          character.fullAvatarUrl = this.getFullAvatarUrl(data.thumbnail);
+          character.mainAvatarUrl = this.getMainAvatarUrl(data.thumbnail);
+          character.insetAvatarUrl = this.getInsetAvatarUrl(data.thumbnail);
           console.log(data);
         }
       );
@@ -64,8 +67,12 @@ export class CharacterService {
     return `${environment.wowApi.renderUrl}${thumbnail}`;
   }
 
-  getFullAvatarUrl(thumbnail: string) {
+  getMainAvatarUrl(thumbnail: string) {
     return this.getAvatarUrl(thumbnail).replace("avatar", "main");
+  }
+
+  getInsetAvatarUrl(thumbnail: string) {
+    return this.getAvatarUrl(thumbnail).replace("avatar", "inset");
   }
 
   constructor(private http: HttpClient) { }

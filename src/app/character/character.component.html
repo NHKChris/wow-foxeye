@@ -1,2 +1,14 @@
-<p>{{character.name}} - {{character.level}} - {{character.iLevel}}</p>
-<img src="{{character.avatarUrl}}" />
+<div class="card character-card text-white">
+    <img class="card-img-top" src="{{character.insetAvatarUrl}}" alt="{{character.name}}">
+    <div class="card-body character-card-body">
+        <h6>
+            <div class="character-name">{{character.name}}</div>
+            <div class="character-level">{{character.level}}</div>
+            <div class="character-class">{{character.class?.name}}</div>
+        </h6>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item character-list-group-item">{{character.level}}</li>
+        <li class="list-group-item character-list-group-item">{{character.iLevel}}</li>
+    </ul>
+</div>

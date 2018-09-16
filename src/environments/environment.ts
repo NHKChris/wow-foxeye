@@ -7,6 +7,7 @@ export const environment = {
   wowApi: {
     apiKey: "",
     baseUrl: "",
+    baseDataUrl: "",
     renderUrl: ""
   }
 };
